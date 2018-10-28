@@ -38,3 +38,4 @@ You can use following examples to enter numbers:
 Calculator supports following operators:
 `+ - / * % ^ ! ( )`
 
+# CPPconsoleCalc

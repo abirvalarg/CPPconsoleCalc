@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <windows.h>
 #include "math.hpp"
 
 using namespace std;
@@ -14,9 +13,6 @@ std::map<const char*, double, Math::compcl>::iterator itr;
 int main()
 {
     cout << "Console calculator."
-	#ifdef DEBUG
-	<< "(PID: " << getpid() << ")"
-	#endif
     << "\r\nType expression and press Enter.\r\nType '.' to exit\r\n\
 Type '?' to list all variables\r\n>";
     while(true)

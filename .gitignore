@@ -14,6 +14,10 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 
+# in-dev
+build/
+calc
+
 ### Linux ###
 *~
 

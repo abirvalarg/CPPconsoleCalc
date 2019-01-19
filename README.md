@@ -12,4 +12,5 @@ You can use following examples to enter numbers:
 Calculator supports following operators:
 `+ - / * % ^ ! ( )`
 
-# CPPconsoleCalc
+# Bugs!!!
+- May be memmory lost in file `math.cpp` on line 129

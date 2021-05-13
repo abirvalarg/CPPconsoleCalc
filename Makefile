@@ -4,11 +4,7 @@ LFLAGS=
 
 SRC=$(wildcard *.cpp)
 HDR=$(wildcard *.hpp)
-ifeq ($(OS),Windows_NT)
 OBJ=$(SRC:%.cpp=%.o)
-else
-OBJ=$(SRC:%.cpp=%.o)
-endif
 OUTPUT=calc
 
 all: $(OUTPUT)

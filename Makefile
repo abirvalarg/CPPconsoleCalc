@@ -8,24 +8,29 @@ OBJ=$(SRC:%.cpp=obj/%.o)
 OUTPUT=calc
 
 ifeq ($(OS),Windows_NT)
-	MKDIR=mkdir
+	MKDIR=rem
 else
 	MKDIR=mkdir -p
 endif
 
+ifeq ($(OS),Windows_NT)
 all: $(OUTPUT)
+	@mkdir obj
+else
+all: $(OUTPUT)
+endif
 
 $(OUTPUT): $(OBJ)
-	$(MKDIR) $(@D)
+	@$(MKDIR) $(@D)
 	$(CXX) $(LFLAGS) -o $@ $^
 
 obj/%.o: %.cpp $(HDR)
-	$(MKDIR) $(@D)
+	@$(MKDIR) $(@D)
 	$(CXX) $(CFLAGS) -o $@ $<
 
 ifeq ($(OS),Windows_NT)
 clear:
-	@del obj\*.o $(OUTPUT)
+	@del /s obj $(OUTPUT)
 else
 clear:
 	@rm -r obj $(OUTPUT) 2> /dev/null || true

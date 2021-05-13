@@ -8,7 +8,7 @@ OBJ=$(SRC:%.cpp=obj/%.o)
 OUTPUT=calc
 
 ifeq ($(OS),Windows_NT)
-	MKDIR=rem
+	MKDIR=echo this system is a piece of garbage
 else
 	MKDIR=mkdir -p
 endif

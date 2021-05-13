@@ -4,28 +4,20 @@ LFLAGS=
 
 SRC=$(wildcard *.cpp)
 HDR=$(wildcard *.hpp)
+ifeq ($(OS),Windows_NT)
+OBJ=$(SRC:%.cpp=obj\%.o)
+else
 OBJ=$(SRC:%.cpp=obj/%.o)
+endif
 OUTPUT=calc
 
-ifeq ($(OS),Windows_NT)
-	MKDIR=echo this system is a piece of garbage
-else
-	MKDIR=mkdir -p
-endif
-
-ifeq ($(OS),Windows_NT)
 all: $(OUTPUT)
 	@mkdir obj
-else
-all: $(OUTPUT)
-endif
 
 $(OUTPUT): $(OBJ)
-	@$(MKDIR) $(@D)
 	$(CXX) $(LFLAGS) -o $@ $^
 
 obj/%.o: %.cpp $(HDR)
-	@$(MKDIR) $(@D)
 	$(CXX) $(CFLAGS) -o $@ $<
 
 ifeq ($(OS),Windows_NT)

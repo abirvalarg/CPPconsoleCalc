@@ -5,27 +5,26 @@ LFLAGS=
 SRC=$(wildcard *.cpp)
 HDR=$(wildcard *.hpp)
 ifeq ($(OS),Windows_NT)
-OBJ=$(SRC:%.cpp=obj\%.o)
+OBJ=$(SRC:%.cpp=%.o)
 else
-OBJ=$(SRC:%.cpp=obj/%.o)
+OBJ=$(SRC:%.cpp=%.o)
 endif
 OUTPUT=calc
 
 all: $(OUTPUT)
-	@mkdir obj
 
 $(OUTPUT): $(OBJ)
 	$(CXX) $(LFLAGS) -o $@ $^
 
-obj/%.o: %.cpp $(HDR)
+%.o: %.cpp $(HDR)
 	$(CXX) $(CFLAGS) -o $@ $<
 
 ifeq ($(OS),Windows_NT)
 clear:
-	@del /s obj $(OUTPUT)
+	@del /s *.o $(OUTPUT)
 else
 clear:
-	@rm -r obj $(OUTPUT) 2> /dev/null || true
+	@rm *.o $(OUTPUT) 2> /dev/null || true
 endif
 
 .PHONY: all clear
